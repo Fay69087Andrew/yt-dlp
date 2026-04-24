@@ -69,7 +69,8 @@ def main(argv=None):
         'geo_bypass_ip_block': opts.geo_bypass_ip_block,
         'socket_timeout': opts.socket_timeout,
         'proxy': opts.proxy,
-        'retries': opts.retries,
+        # Increased default retries from 10 to 15 for more reliable downloads on flaky connections
+        'retries': opts.retries if opts.retries is not None else 15,
         'fragment_retries': opts.fragment_retries,
         'skip_unavailable_fragments': opts.skip_unavailable_fragments,
         'keepvideo': opts.keepvideo,
@@ -88,49 +89,4 @@ def main(argv=None):
         'writedescription': opts.writedescription,
         'writeinfojson': opts.writeinfojson,
         'writeannotations': opts.writeannotations,
-        'writepages': opts.writepages,
-        'youtube_include_dash_manifest': opts.youtube_include_dash_manifest,
-        'encoding': opts.encoding,
-        'extract_flat': opts.extract_flat,
-        'mark_watched': opts.mark_watched,
-        'merge_output_format': opts.merge_output_format,
-        'postprocessors': [],
-        'fixup': opts.fixup,
-        'source_address': opts.source_address,
-        'call_home': opts.call_home,
-        'sleep_interval': opts.sleep_interval,
-        'max_sleep_interval': opts.max_sleep_interval,
-        'sleep_interval_subtitles': opts.sleep_interval_subtitles,
-        'external_downloader': opts.external_downloader,
-        'list_thumbnails': opts.list_thumbnails,
-        'match_filter': None,
-        'no_color': opts.no_color,
-        'ffmpeg_location': opts.ffmpeg_location,
-        'hls_prefer_native': opts.hls_prefer_native,
-        'hls_use_mpegts': opts.hls_use_mpegts,
-        'hls_split_discontinuity': opts.hls_split_discontinuity,
-        'concurrent_fragment_downloads': opts.concurrent_fragment_downloads,
-    }
-
-    try:
-        with YoutubeDL(ydl_opts) as ydl:
-            retcode = ydl.download(args)
-    except DownloadError:
-        sys.exit(1)
-    except SameFileError as e:
-        sys.exit(f'ERROR: {e}')
-    except KeyboardInterrupt:
-        write_string('\nERROR: Interrupted by user\n', out=sys.stderr)
-        sys.exit(1)
-    except MaxDownloadsReached:
-        ydl.to_screen('[info] Maximum number of downloads reached')
-        sys.exit(0)
-    except ExistingVideoReached:
-        ydl.to_screen('[info] Encountered a video that is already in the archive, stopping due to --break-on-existing')
-        sys.exit(0)
-
-    sys.exit(retcode)
-
-
-if __name__ == '__main__':
-    main()
+        'writep
