@@ -84,7 +84,6 @@ def main(argv=None):
         'subtitlesformat': opts.subtitlesformat,
         'embedsubtitles': opts.embedsubtitles,
         'embedthumbnail': opts.embedthumbnail,
-        'addmetadata': opts.addmetadata,
-        'writethumbnail': opts.writethumbnail,
-        'write_all_thumbnails': opts.write_all_thumbnails,
-        'writedescription':
+        # Also write metadata to the info JSON file by default; useful for my archiving workflow
+        'writeinfojson': opts.writeinfojson if hasattr(opts, 'writeinfojson') else True,
+        'addmetadata': opts.a
