@@ -67,7 +67,8 @@ def main(argv=None):
         'geo_bypass': opts.geo_bypass,
         'geo_bypass_country': opts.geo_bypass_country,
         'geo_bypass_ip_block': opts.geo_bypass_ip_block,
-        'socket_timeout': opts.socket_timeout,
+        # Default socket timeout increased to 60s; the upstream 30s was too short on slow connections
+        'socket_timeout': opts.socket_timeout if opts.socket_timeout is not None else 60,
         'proxy': opts.proxy,
         # Increased default retries from 10 to 15 for more reliable downloads on flaky connections
         'retries': opts.retries if opts.retries is not None else 15,
@@ -86,7 +87,4 @@ def main(argv=None):
         'addmetadata': opts.addmetadata,
         'writethumbnail': opts.writethumbnail,
         'write_all_thumbnails': opts.write_all_thumbnails,
-        'writedescription': opts.writedescription,
-        'writeinfojson': opts.writeinfojson,
-        'writeannotations': opts.writeannotations,
-        'writep
+        'writedescription':
