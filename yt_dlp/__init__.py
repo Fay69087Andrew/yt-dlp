@@ -84,6 +84,7 @@ def main(argv=None):
         'subtitlesformat': opts.subtitlesformat,
         'embedsubtitles': opts.embedsubtitles,
         'embedthumbnail': opts.embedthumbnail,
-        # Also write metadata to the info JSON file by default; useful for my archiving workflow
-        'writeinfojson': opts.writeinfojson if hasattr(opts, 'writeinfojson') else True,
-        'addmetadata': opts.a
+        # Also write metadata
+        # Write thumbnail to disk by default so I can use it in media players
+        'writethumbnail': opts.writethumbnail if hasattr(opts, 'writethumbnail') else True,
+    }
