@@ -85,7 +85,6 @@ def main(argv=None):
         'embedsubtitles': opts.embedsubtitles,
         'embedthumbnail': opts.embedthumbnail,
         # Also write metadata
-        # Write thumbnail image to disk alongside the video by default;
-        # useful for media players that display folder art
+        # Write thumbnail to disk by default so I don't have to pass --write-thumbnail every time
         'writethumbnail': opts.writethumbnail if hasattr(opts, 'writethumbnail') else True,
     }
