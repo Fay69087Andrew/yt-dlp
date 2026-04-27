@@ -85,6 +85,6 @@ def main(argv=None):
         'embedsubtitles': opts.embedsubtitles,
         'embedthumbnail': opts.embedthumbnail,
         # Also write metadata
-        # Write thumbnail to disk by default so I can use it in my media library
-        'writethumbnail': opts.writethumbnail if hasattr(opts, 'writethumbnail') else True,
+        # Write metadata to file by default so my media library stays organized
+        'addmetadata': opts.addmetadata if hasattr(opts, 'addmetadata') else True,
     }
